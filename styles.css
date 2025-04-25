@@ -1,0 +1,252 @@
+/* General body styling */
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #080808;
+  color: #ddd;
+  transition: background-color 1s ease-in-out;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container styling */
+.container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 10px;
+  border-radius: 10px;
+  background: linear-gradient(145deg, #333, #000);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+}
+
+.score {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Game board */
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 5px;
+  width: 300px;
+  height: 300px;
+  margin: 0 auto 20px;
+  background-color: #222;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+/* Game cell */
+.cell {
+  width: 100%;
+  height: 100%;
+  background-color: #444;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 48px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cell.x {
+  color: #ff6347; /* Red for 'X' */
+}
+
+.cell.o {
+  color: #4682b4; /* Blue for 'O' */
+}
+
+/* Hover effect for cells */
+.cell:hover {
+  transform: scale(1.1);
+  background-color: #555;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* Active click effect */
+.cell:active {
+  transform: scale(1.05);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
+  background-color: #333;
+}
+
+/* Animation for when X wins */
+@keyframes x-win {
+  0% {
+    background-color: #000;
+  }
+  50% {
+    background-color: #ff6347; /* Red for X */
+    transform: scale(1.1);
+  }
+  100% {
+    background-color: #020202;
+    transform: scale(1.1);
+  }
+}
+
+/* Animation for when O wins */
+@keyframes o-win {
+  0% {
+    background-color: #000;
+  }
+  50% {
+    background-color: #4682b4; /* Blue for O */
+    transform: scale(1.1);
+  }
+  100% {
+    background-color: #020202;
+    transform: scale(1.1);
+  }
+}
+
+/* Apply animation when X wins */
+.page-x-win {
+  animation: x-win 4s ease-in-out infinite;
+}
+
+/* Apply animation when O wins */
+.page-o-win {
+  animation: o-win 4s ease-in-out infinite;
+}
+
+/* Button styling */
+button {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+button:active {
+  transform: scale(0.98);
+  background-color: #1e7e34;
+}
+
+/* Message styling */
+.message {
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #66ff00;
+}
+
+/* Mobile View Styling */
+@media (max-width: 768px) {
+  /* Adjust container width */
+  .container {
+    width: 90%; /* Make the container take up 90% of the screen width */
+    margin: 20px auto;
+  }
+
+  /* Adjust board size */
+  .board {
+    width: 100%;
+    height: 100%;
+    max-width: 300px;
+    max-height: 300px;
+  }
+
+  /* Adjust font sizes */
+  h1 {
+    font-size: 28px;
+  }
+
+  .score {
+    font-size: 18px;
+  }
+
+  .cell {
+    font-size: 36px; /* Slightly smaller font size for better fit on mobile */
+  }
+
+  button {
+    padding: 8px 16px;
+    font-size: 16px;
+  }
+
+  .message {
+    font-size: 18px;
+  }
+}
+
+/* Extra small mobile view (portrait or smaller screens) */
+@media (max-width: 480px) {
+  /* Further reduce board and font sizes */
+  .board {
+    width: 100%;
+    height: 100%;
+    max-width: 250px;
+    max-height: 250px;
+  }
+
+  .cell {
+    font-size: 30px; /* Reduce font size more for smaller screens */
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .score {
+    font-size: 16px;
+  }
+
+  .message {
+    font-size: 16px;
+  }
+
+  button {
+    padding: 8px 14px;
+    font-size: 14px;
+  }
+}
+
+/* Winning cell highlight */
+.winning-cell {
+  background-color: #00b3b3;
+  box-shadow: 0 0 15px rgba(0, 179, 179, 0.8);
+}
+
+/* Add pulse effect to winning cells */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 5px rgba(0, 179, 179, 0.5);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(0, 179, 179, 0.8);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 5px rgba(0, 179, 179, 0.5);
+  }
+}
+
+.winning-cell.pulse {
+  animation: pulse 1s ease-in-out infinite;
+}
